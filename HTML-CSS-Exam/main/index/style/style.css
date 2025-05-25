@@ -5,17 +5,16 @@
 }
 
 body{
-    background-color: rgb(194, 194, 194);
-    font-family: sans-serif;
-    font-size: 1rem;
-    color: gray;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
 /*Sidebar Menu*/
 .sidebar{
     max-width: 200px;
-    background-color: rgb(206, 205, 205);
-    border-right: 3px solid rgb(173, 172, 172);
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     height: 100%;
     position: absolute;
     padding: 20px;
@@ -28,9 +27,9 @@ body{
 }
 .sidebar-hr{
     position: relative;
-    left: -33px;
+    left: -30px;
     width: 200px;
-    background-color: gray;
+    background-color: black;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -39,6 +38,7 @@ body{
 }
 .sidebar-item{
     display: flex;
+    color: #666;
     text-decoration: none;
     padding: 10px;
 }
@@ -50,11 +50,68 @@ body{
 .sidebar-text{
     color: rgb(119, 119, 119);
     margin-left: 15px;
-    margin-top: 1px;
+    margin-top: -2px;
     vertical-align: middle;
 }
 
+/*Main Content Area*/
+.main-content{
+    margin-left: 200px;
+    width: calc(100vw - 200px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 /*Header*/
-.header-logo{
-    background-color: black;
+.header{
+    background-color: white;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.menu-icon{
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+.menu-icon span{
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    margin: 2px 0;
+    border-radius: 1px;
+}
+.header-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+/*Main Body*/
+.main-body{
+    flex: 1;
+    padding: 20px;
+    background-color: rgb(194, 194, 194);
+    overflow-y: auto;
+}
+
+/*Footer*/
+.footer{
+    background-color: white;
+    padding: 10px 20px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    color: #666;
 }
