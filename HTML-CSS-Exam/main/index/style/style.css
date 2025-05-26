@@ -40,7 +40,7 @@ body{
     display: flex;
     color: #666;
     text-decoration: none;
-    padding: 10px;
+    padding: 15px;
 }
 .sidebar-logo{
     width: 1.1rem;
@@ -48,7 +48,6 @@ body{
     vertical-align: middle;
 }
 .sidebar-text{
-    color: rgb(119, 119, 119);
     margin-left: 15px;
     margin-top: -2px;
     vertical-align: middle;
@@ -65,53 +64,30 @@ body{
 
 /*Header*/
 .header{
-    background-color: white;
+    background-color: #f5f5f5;
     padding: 15px 20px;
-    border-bottom: 1px solid #e0e0e0;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.menu-icon{
-    width: 24px;
-    height: 24px;
-    margin-right: 15px;
-    cursor: pointer;
-    background-color: #333;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-}
-.menu-icon span{
-    width: 18px;
-    height: 2px;
-    background-color: white;
-    margin: 2px 0;
-    border-radius: 1px;
 }
 .header-title{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #333;
-    margin: 0;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
 /*Main Body*/
 .main-body{
     flex: 1;
     padding: 20px;
-    background-color: rgb(194, 194, 194);
+    background-color: #f5f5f5;
     overflow-y: auto;
 }
 
 /*Footer*/
 .footer{
-    background-color: white;
-    padding: 10px 20px;
-    border-top: 1px solid #e0e0e0;
-    text-align: center;
     color: #666;
+}
+.footer-items{
+    margin: 20px;
 }
