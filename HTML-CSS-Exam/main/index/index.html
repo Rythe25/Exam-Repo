@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/style.css" />
-    <link rel="Responsive" href="style/responsive.css">
+    <link rel="Responsive" href="style/responsive.css" />
     <title>Dashboard</title>
   </head>
   <body>
@@ -69,120 +69,221 @@
       <div class="main-content">
         <!--Header-->
         <header class="header">
-          <a href="#"><img class="menu-logo" src="icon/menu.png" alt="Menu"></a>
+          <a href="#"
+            ><img class="menu-logo" src="icon/menu.png" alt="Menu"
+          /></a>
           <span class="header-title">Dashboard</span>
         </header>
 
         <!--Body-->
         <main class="dashboard-content">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <div class="stat-inner-grid">
-                            <div class="stat-icon-container">
-                                <img class="stat-icon icon-green" src="icon/data_white.svg" alt="">
-                            </div>
-                            <div class="stat-text-container">
-                                <p class="stat-top-text">Used Space</p>
-                                <p class="stat-bot-text">49/50 GB</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="stat-bottom">
-                            <img src="icon/alert.png" alt="">
-                            <span>Get more space..</span>
-                        </div>
+          <!--State Grid-->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-info">
+                <div class="stat-inner-grid">
+                  <div class="stat-icon-container">
+                    <img
+                      class="stat-icon bg-green"
+                      src="icon/data_white.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="stat-text-container">
+                    <p class="stat-top-text">Used Space</p>
+                    <p class="stat-bot-text">49/50 GB</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="stat-bottom">
+                  <img src="icon/alert.png" alt="" />
+                  <span>Get more space..</span>
+                </div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-info">
+                <div class="stat-inner-grid">
+                  <div class="stat-icon-container">
+                    <img
+                      class="stat-icon bg-yellow"
+                      src="icon/shop_white.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="stat-text-container">
+                    <p class="stat-top-text">Revenue</p>
+                    <p class="stat-bot-text">$ 34,245</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="stat-bottom">
+                  <img src="icon/calendar.png" alt="" />
+                  <span>Last 24 Hours</span>
+                </div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-info">
+                <div class="stat-inner-grid">
+                  <div class="stat-icon-container">
+                    <img
+                      class="stat-icon bg-blue"
+                      src="icon/tag_white.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="stat-text-container">
+                    <p class="stat-top-text">Fixed Issues</p>
+                    <p class="stat-bot-text">75</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="stat-bottom">
+                  <img src="icon/down.png" alt="" />
+                  <span>Tracked From Github </span>
+                </div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-info">
+                <div class="stat-inner-grid">
+                  <div class="stat-icon-container">
+                    <img
+                      class="stat-icon bg-pink"
+                      src="icon/paperplane_white.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="stat-text-container">
+                    <p class="stat-top-text">Followers</p>
+                    <p class="stat-bot-text">+ 245</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="stat-bottom">
+                  <img src="icon/time.png" alt="" />
+                  <span>Just Updated</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Chart Grid-->
+          <div class="charts-grid">
+            <div class="chart-card">
+              <div class="chart-inner-grid">
+                <div class="chart-icon-container">
+                  <img
+                    class="chart-icon bg-green"
+                    src="icon/graphics.svg"
+                    alt="Graphics"
+                  />
+                </div>
+                <div class="chart-text-container">
+                  <p class="chart-top-text">Daily Sales</p>
+                  <p class="chart-bot-text">55% increase in today sales</p>
+                </div>
+              </div>
+              <hr />
+              <div class="chart-bottom">
+                <img src="icon/time.png" alt="Time" />
+                <span>updated 4 minutes ago</span>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-inner-grid">
+                <div class="chart-icon-container">
+                  <img
+                    class="chart-icon bg-yellow"
+                    src="icon/graphics.svg"
+                    alt="Graphics"
+                  />
+                </div>
+                <div class="chart-text-container">
+                  <p class="chart-top-text">Email Subscriptions</p>
+                  <p class="chart-bot-text">Last Campaign Performance</p>
+                </div>
+              </div>
+              <hr />
+              <div class="chart-bottom">
+                <img src="icon/time.png" alt="Time" />
+                <span>campaign sent 2 days ago</span>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-inner-grid">
+                <div class="chart-icon-container">
+                  <img
+                    class="chart-icon bg-blue"
+                    src="icon/graphics.svg"
+                    alt="Graphics"
+                  />
+                </div>
+                <div class="chart-text-container">
+                  <p class="chart-top-text">Completed Tasks</p>
+                  <p class="chart-bot-text">Last Campaign Performance</p>
+                </div>
+              </div>
+              <hr />
+              <div class="chart-bottom">
+                <img src="icon/time.png" alt="Time" />
+                <span>campaign sent 2 days ago</span>
+              </div>
+            </div>
+          </div>
+
+          <!--Info Grid-->
+          <div class="info-grid">
+            <!--Task Card-->
+            <div class="tasks-card">
+                <div class="task-header bg-yellow">
+                    <div class="task-header-title">Tasks: </div>
+                    <div class="task-header-item">
+                      <button class="task-header-button">
+                        <img class="task-header-icon" src="icon/bug.svg" alt="Bugs">
+                        <span>Bugs</span>
+                      </button>
+                    </div>
+                    <div class="task-header-item">
+                      <button class="task-header-button">
+                        <img class="task-header-icon" src="icon/web.svg" alt="Web">
+                        <span>Website</span>
+                      </button>
+                    </div>
+                    <div class="task-header-item">
+                      <button class="task-header-button">
+                        <img class="task-header-icon" src="icon/cloud.svg" alt="Bugs">
+                        <span>Server</span>
+                      </button>
                     </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <div class="stat-inner-grid">
-                            <div class="stat-icon-container">
-                                <img class="stat-icon icon-orange" src="icon/shop_white.svg" alt="">
-                            </div>
-                            <div class="stat-text-container">
-                                <p class="stat-top-text">Revenue</p>
-                                <p class="stat-bot-text">$ 34,245</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="stat-bottom">
-                            <img src="icon/calendar.png" alt="">
-                            <span>Last 24 Hours</span>
-                        </div>
-                    </div>
+                <div class="task-item">
+                  <input class="task-checkbox" type="checkbox">
+                  <span class="task-text">Sign contract for "What are confrence organizers afraid of?"</span>
+                  <div class="task-icon-container">
+                    <img class="task-icon" src="icon/edit.png" alt="Edit">
+                    <img class="task-icon" src="icon/remove.png" alt="Remove">
+                  </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <div class="stat-inner-grid">
-                            <div class="stat-icon-container">
-                                <img class="stat-icon icon-blue" src="icon/tag_white.svg" alt="">
-                            </div>
-                            <div class="stat-text-container">
-                                <p class="stat-top-text">Fixed Issues</p>
-                                <p class="stat-bot-text">75</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="stat-bottom">
-                            <img src="icon/down.png" alt="">
-                            <span>Tracked From Github   </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <div class="stat-inner-grid">
-                            <div class="stat-icon-container">
-                                <img class="stat-icon icon-pink" src="icon/paperplane_white.svg" alt="">
-                            </div>
-                            <div class="stat-text-container">
-                                <p class="stat-top-text">Followers</p>
-                                <p class="stat-bot-text">+ 245</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="stat-bottom">
-                            <img src="icon/time.png" alt="">
-                            <span>Just Updated</span>
-                        </div>
-                    </div>
-                </div>
+                <hr>
             </div>
 
-            <div class="charts-grid">
-                <div class="chart-card">
-                    1
-                </div>
-                <div class="chart-card">
-                    2
-                </div>
-                <div class="chart-card">
-                    3
-                </div>
-            </div>
-
-            <div class="info-grid">
-                <div class="tasks-card">
-                    1
-                </div>
-                <div class="employees-card">
-                    2
-                </div>
-            </div>
+            <div class="employees-card">2</div>
+          </div>
         </main>
 
         <!--Footer-->
         <footer class="footer">
           <hr />
-            <div class="footer-items">
-                <nav class="footer-nav">
-                <a class="footer-item" href="#">ABOUT</a>
-                <a class="footer-item" href="#">BLOG</a>
-                <a class="footer-item" href="#">LICENESES</a>
-                </nav>
-                <span>2019 - made with love</span>
-            </div>
+          <div class="footer-items">
+            <nav class="footer-nav">
+              <a class="footer-item" href="#">ABOUT</a>
+              <a class="footer-item" href="#">BLOG</a>
+              <a class="footer-item" href="#">LICENESES</a>
+            </nav>
+            <span>2019 - made with love</span>
+          </div>
         </footer>
       </div>
     </div>
