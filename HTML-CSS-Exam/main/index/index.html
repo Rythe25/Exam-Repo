@@ -1,78 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="Responsive" href="style/responsive.css">
     <title>Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <!--Side Bar-->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <span>Company</span>
-                <hr class="sidebar-hr">
-            </div>
-            <ul class="sidebar-menu">
-                <li class="sidebar-tab">
-                    <a href="#" class="sidebar-item">
-                        <img class="sidebar-logo" src="icon/dashboard_gray.svg" alt="Dashboard"/>
-                        <span class="sidebar-text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="sidebar-tab">
-                    <a href="#" class="sidebar-item">
-                        <img class="sidebar-logo" src="icon/account_gray.svg" alt="User Profile"/> 
-                        <span class="sidebar-text">User Profile</span>
-                    </a>
-                </li>
-                <li class="sidebar-tab">
-                    <a href="#" class="sidebar-item">
-                        <img class="sidebar-logo" src="icon/map_gray.svg" alt="Maps"/> 
-                        <span class="sidebar-text">Maps</span>
-                    </a>
-                </li>
-                <li class="sidebar-tab">
-                    <a href="#" class="sidebar-item">
-                        <img class="sidebar-logo" src="icon/notify_gray.svg" alt="Notifications"/>
-                        <span class="sidebar-text">Notifications</span>
-                    </a>
-                </li>
-                <li class="sidebar-tab">
-                    <a href="#" class="sidebar-item">
-                        <img class="sidebar-logo" src="icon/support_gray.svg" alt="Support">
-                        <span class="sidebar-text">Support</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-        <!--Main Content Area-->
-        <div class="main-content">
-            <!--Header-->
-            <header class="header">
-                <button class="menu-icon">
-                </button>
-                <h1 class="header-title">Dashboard</h1>
-            </header>
-
-            <!--Body-->
-            <main class="main-body">
-                <p>Main content area - your dashboard content goes here</p>
-            </main>
-
-            <!--Footer-->
-            <footer class="footer">     
-                <hr>
-                <nav class="footer-left
-                ">
-                    <a href="">ABOUT</a>
-                    <a href="">BLOG</a>
-                    <a href="">LICENESES</a>
-                </nav>
-            </footer>
+      <!--Side Bar-->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span>Company</span>
+          <hr class="sidebar-hr" />
         </div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/dashboard_gray.svg"
+                alt="Dashboard"
+              />
+              <span class="sidebar-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/account_gray.svg"
+                alt="User Profile"
+              />
+              <span class="sidebar-text">User Profile</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img class="sidebar-logo" src="icon/map_gray.svg" alt="Maps" />
+              <span class="sidebar-text">Maps</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/notify_gray.svg"
+                alt="Notifications"
+              />
+              <span class="sidebar-text">Notifications</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/support_gray.svg"
+                alt="Support"
+              />
+              <span class="sidebar-text">Support</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!--Main Content Area-->
+      <div class="main-content">
+        <!--Header-->
+        <header class="header">
+          <a href="#"><img class="menu-logo" src="icon/menu.png" alt="Menu"></a>
+          <span class="header-title">Dashboard</span>
+        </header>
+
+        <!--Body-->
+        <main class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-inner-grid">
+                            <div class="stat-icon-container">
+                                <img class="stat-icon icon-green" src="icon/data_white.svg" alt="">
+                            </div>
+                            <div class="stat-text-container">
+                                <p class="stat-top-text">Used Space</p>
+                                <p class="stat-bot-text">49/50 GB</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="stat-bottom">
+                            <img src="icon/alert.png" alt="">
+                            <span>Get more space..</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-inner-grid">
+                            <div class="stat-icon-container">
+                                <img class="stat-icon icon-orange" src="icon/shop_white.svg" alt="">
+                            </div>
+                            <div class="stat-text-container">
+                                <p class="stat-top-text">Revenue</p>
+                                <p class="stat-bot-text">$ 34,245</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="stat-bottom">
+                            <img src="icon/calendar.png" alt="">
+                            <span>Last 24 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-inner-grid">
+                            <div class="stat-icon-container">
+                                <img class="stat-icon icon-blue" src="icon/tag_white.svg" alt="">
+                            </div>
+                            <div class="stat-text-container">
+                                <p class="stat-top-text">Fixed Issues</p>
+                                <p class="stat-bot-text">75</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="stat-bottom">
+                            <img src="icon/down.png" alt="">
+                            <span>Tracked From Github   </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-inner-grid">
+                            <div class="stat-icon-container">
+                                <img class="stat-icon icon-pink" src="icon/paperplane_white.svg" alt="">
+                            </div>
+                            <div class="stat-text-container">
+                                <p class="stat-top-text">Followers</p>
+                                <p class="stat-bot-text">+ 245</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="stat-bottom">
+                            <img src="icon/time.png" alt="">
+                            <span>Just Updated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    1
+                </div>
+                <div class="chart-card">
+                    2
+                </div>
+                <div class="chart-card">
+                    3
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="tasks-card">
+                    1
+                </div>
+                <div class="employees-card">
+                    2
+                </div>
+            </div>
+        </main>
+
+        <!--Footer-->
+        <footer class="footer">
+          <hr />
+            <div class="footer-items">
+                <nav class="footer-nav">
+                <a class="footer-item" href="#">ABOUT</a>
+                <a class="footer-item" href="#">BLOG</a>
+                <a class="footer-item" href="#">LICENESES</a>
+                </nav>
+                <span>2019 - made with love</span>
+            </div>
+        </footer>
+      </div>
     </div>
-    </div>
-</body>
+  </body>
 </html>
