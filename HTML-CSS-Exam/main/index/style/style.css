@@ -166,6 +166,7 @@ body{
 }
 .chart-icon{
     position: relative;
+    width: 500px;
     min-width: 100px;
     height: 200px;
     padding: 20px;
@@ -213,7 +214,7 @@ body{
 /* Task Card */
 .task-header{
     display: grid;
-    grid-template-columns: 0.3fr repeat(3,0.6fr);
+    grid-template-columns: 0.3fr repeat(4,0.6fr);
     color: white;
     padding: 10px;
 }
@@ -241,6 +242,9 @@ body{
     padding: 5px 10px;
 }
 .task-item{
+    display: inline;
+    flex-direction: column;
+    justify-content: left;
     margin: 10px;
     margin-top: 20px;
 }
@@ -248,20 +252,17 @@ body{
     margin-right: 5px;
 }
 .task-text{
-    margin-right: 35px;
+    margin-left: 15px;
 }
 .task-icon-container{
-    display: inline-block;
-    align-items: flex-end;
+    display: inline;
+    
 }
 .task-icon{
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     vertical-align: middle;
     margin-right: 15px;
-}
-.task-item:last-child{
-    margin-right: 0px;
 }
 .task-header-button:hover{
     background-color: #ebba32;
