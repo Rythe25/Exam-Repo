@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/userprofile.css" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/responsive-userprofile.css" />
+    <title>User Profile</title>
+  </head>
+  <body>
+    <div class="container">
+      <!--Side Bar-->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span>Company</span>
+          <hr class="sidebar-hr" />
+        </div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-tab">
+            <a href="index.html" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/dashboard_gray.svg"
+                alt="Dashboard"
+              />
+              <span class="sidebar-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/account_gray.svg"
+                alt="User Profile"
+              />
+              <span class="sidebar-text">User Profile</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img class="sidebar-logo" src="icon/map_gray.svg" alt="Maps" />
+              <span class="sidebar-text">Maps</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/notify_gray.svg"
+                alt="Notifications"
+              />
+              <span class="sidebar-text">Notifications</span>
+            </a>
+          </li>
+          <li class="sidebar-tab">
+            <a href="#" class="sidebar-item">
+              <img
+                class="sidebar-logo"
+                src="icon/support_gray.svg"
+                alt="Support"
+              />
+              <span class="sidebar-text">Support</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!--Main Content Area-->
+      <div class="main-content">
+        <!--Header-->
+        <header class="header">
+          <a href="#"
+            ><img class="menu-logo" src="icon/menu.png" alt="Menu"
+          /></a>
+          <span class="header-title">User Profile</span>
+        </header>
+
+        <!--Body-->
+        <main class="userprofile-content">
+          <!--Edit Profile Card-->
+          <div class="userprofile-grid">
+            <div class="edit-profile-card">
+
+              <div class="edit-profile-header bg-pink">
+                <p class="edit-profile-title">Edit Profile</p>
+                <p class="edit-profile-subtitle">Complete your profile</p>
+              </div>
+
+              <div class="edit-profile-container">
+                <div class="edit-profile-item-container">
+                  <div class="edit-profile-item">
+                    <label for="company-input">Company</label>
+                    <input class="one-half" id="company-input" type="text" />
+                  </div>
+                  <div class="edit-profile-item">
+                    <label for="username-input">Username</label>
+                    <input class="one-half" id="username-input" type="text" />
+                  </div>
+                  <div class="edit-profile-item">
+                    <label for="email-address-input">Email address</label>
+                    <input class="one-half" id="email-address-input" type="text" />
+                  </div>
+                </div>
+
+                <div class="edit-profile-item-container">
+                  <div class="edit-profile-item">
+                    <label for="firstname-input">First name</label>
+                    <input id="firstname-input" type="text" />
+                  </div>
+                  <div class="edit-profile-item">
+                    <label for="lastname-input">Last name</label>
+                    <input id="lastname-input" type="text" />
+                  </div>
+                </div>
+
+                <div class="edit-profile-item-container">
+                  <div class="edit-profile-item">
+                    <label for="address-input">Address</label>
+                    <input id="address-input" type="text" />
+                  </div>
+                </div>
+
+                <div class="edit-profile-item-container">
+                  <div class="edit-profile-item">
+                    <label for="city-input">City</label>
+                    <input id="city-input" type="text" />
+                  </div>
+                  <div class="edit-profile-item">
+                    <label for="country-input">Country</label>
+                    <input id="country-input" type="text" />
+                  </div>
+                  <div class="edit-profile-item">
+                    <label for="postal-code-input">Postal Code</label>
+                    <input id="postal-code-input" type="text" />
+                  </div>
+                </div>
+
+                <div class="edit-profile-item-container">
+                  <div class="edit-profile-item">
+                    <label for="about-me-input">About me</label>
+                    <input id="about-me-input" type="text" />
+                  </div>
+                </div>
+
+                <div class="edit-profile-button-container">
+                  <button class="edit-profile-button bg-pink">UPDATE PROFILE</button>
+                </div>
+              </div>
+            </div>
+
+            <!--Founder Card-->
+            <div class="founder-card">
+              <div class="founder-container">
+                <div class="founder-image-container">
+                  <img class="founder-image" src="icon/account_gray.svg" alt="Alec Thompson" />
+                </div>
+                <p>CEO/CO-FOUNDER</p>
+                <p>Alec Thompson</p>
+                <p>
+                  Don't be scared of the truth because we need to restart the
+                  human foundatio in the truth And I love you like Kanye loves
+                  Kanye I love Rick Owens' bed design but the back is...
+                </p>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!--Footer-->
+        <footer class="footer">
+          <hr />
+          <div class="footer-items">
+            <nav class="footer-nav">
+              <a class="footer-item" href="#">ABOUT</a>
+              <a class="footer-item" href="#">BLOG</a>
+              <a class="footer-item" href="#">LICENESES</a>
+            </nav>
+            <span>2019 - made with love</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
