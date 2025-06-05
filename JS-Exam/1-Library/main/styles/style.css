@@ -96,7 +96,7 @@ td:nth-child(3),
 td:nth-child(4){
     padding-left: 10px;
 }
-th:nth-child(1), td:nth-child(1) { width: 20px; }    /* ID */
+th:nth-child(1), td:nth-child(1) { width: 3.8%; }    /* ID */
 th:nth-child(2), td:nth-child(2) { width: 130px; }   /* Name */
 th:nth-child(3), td:nth-child(3) { width: 140px; }   /* Author */
 th:nth-child(4), td:nth-child(4) { width: 140px; }   /* Publisher */
