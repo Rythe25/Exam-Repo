@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/visitor.css">
-    <title>Visitors</title>
+    <link rel="stylesheet" href="styles/card.css">
+    <title>Cards</title>
 </head>
 <body>
     <div class="container">
@@ -13,8 +13,8 @@
             <h1 class="title title-color">LIBRARY</h1>
             <nav class="nav-items">
                 <a href="index.html">Books</a>
-                <a href="#">Visitors</a>
-                <a href="card.html">Cards</a>
+                <a href="visitor.html">Visitors</a>
+                <a href="#">Cards</a>
                 <a href="statistic.html">Statistics</a>
             </nav>
         </header>
@@ -23,8 +23,8 @@
             <div class="main-container">
                 <div class="main-header">
                     <div class="main-header-top">
-                        <h4 class="title-color">ALL VISITORS:</h4>
-                        <button class="button-style">New Visitor</button>
+                        <h4 class="title-color">ALL CARDS:</h4>
+                        <button class="button-style">New Card</button>
                     </div>
                     <hr>
                     <div class="main-header-bottom">
@@ -32,7 +32,10 @@
                             <label for="sort">Sort by: </label>
                             <select class="select-style" name="sort" id="sort">
                                 <option value="id">ID</option>
-                                <option value="name">Name</option>
+                                <option value="name">VisitorId</option>
+                                <option value="author">BookId</option>
+                                <option value="publisher">Borrow Date</option>
+                                <option value="publish">Return Date</option>
                             </select>
                             <button class="button-style">Sort</button>
                         </div>
@@ -48,21 +51,20 @@
                     <table>
                         <thead>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Phone Number</th>
-                            <th>Edit</th>
+                            <th>VisitorId</th>
+                            <th>BookId</th>
+                            <th>BorrowDate</th>
+                            <th>ReturnDate</th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Visitor</td>
-                                <td>Phone Number</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>BorrowDate</td>
                                 <td>
                                     <button class="edit-buttons-style">
-                                        <img class="button-icons-style" src="icon/pencil.png" alt="Edit">
-                                    </button>
-                                    <button class="edit-buttons-style">
-                                        <img class="button-icons-style" src="icon/trash-xmark.png" alt="Edit">
+                                        <img class="button-icons-style" src="icon/back.png" alt="Return Book">
                                     </button>
                                 </td>
                             </tr>
@@ -72,34 +74,22 @@
             </div>
         </main> 
 
-        <div class="pop-up visitor-add-pop-up">
+        <div class="pop-up card-add-pop-up">
             <div class="pop-up-container">
-                <h1>New Visitor</h1>
+                <h1>New Card</h1>
                 <div class="pop-up-top">
-                    <label for="Name">Name : </label>
-                    <input class="input-style" name="Name" type="text">
-                    <label for="PhoneNumber">Phone Number : </label>
-                    <input class="input-style" name="PhoneNumber" type="text">
+                    <label for="VisitorId">VisitorId : </label>
+                    <input class="input-style" name="VisitorId" type="text">
+                    <label for="BookId">BookId : </label>
+                    <input class="input-style" name="BookId" type="text">
+                    <label for="BorrowDate">Borrow Date : </label>
+                    <input class="input-style" name="BorrowDate" type="date">
+                    <label for="ReturnDate">Return Date : </label>
+                    <input class="input-style" name="ReturnDate" type="date">
                 </div>
                 <div class="pop-up-bottom">
                     <button class="button-style">Cancel</button>
                     <button class="button-style">Create</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pop-up visitor-edit-pop-up">
-            <div class="pop-up-container">
-                <h1>Edit Visitor</h1>
-                <div class="pop-up-top">
-                    <label for="Name">Name : </label>
-                    <input class="input-style" name="Name" type="text">
-                    <label for="PhoneNumber">Phone Number : </label>
-                    <input class="input-style" name="PhoneNumber" type="text">
-                </div>
-                <div class="pop-up-bottom">
-                    <button class="button-style">Cancel</button>
-                    <button class="button-style">Confirm</button>
                 </div>
             </div>
         </div>
