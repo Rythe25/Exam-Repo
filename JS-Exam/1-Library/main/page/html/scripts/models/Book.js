@@ -1,11 +1,11 @@
 export class Book {
-    constructor(id, name, author, publisher, year, numberOfPages, numberOfCopies) {
+    constructor(id, name, author, publisher, publish, pages, copies) {
         this.id = id
         this.name = name
         this.author = author
         this.publisher = publisher
-        this.year = year
-        this.numberOfCopies = numberOfCopies
-        this.numberOfPages = numberOfPages
+        this.publish = publish
+        this.pages = pages
+        this.copies = copies
     }
 }

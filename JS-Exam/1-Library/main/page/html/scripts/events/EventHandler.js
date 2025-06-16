@@ -4,39 +4,39 @@ import { BookEventManager } from "./BookEventManager.js";
 export class EventHandler {
     constructor() {
         this.bookManager = BookManagement.getInstance();
-        this.bookEventManager = BookEventManager.getInstance();
-        this.loadData();
+        this.bookEventManager = new BookEventManager();
+        this.insertData();
     }
 
-    loadData(){
-        window.localStorage.clear()
+    insertData() {
+        window.localStorage.clear();
+
+        if (this.bookManager.getAllBooks().length > 0) {
+            console.log("Books already exist in localStorage.");
+            return;
+        }
 
         let storedData = JSON.parse(window.localStorage.getItem('book')) || { data: [] };
         if (storedData.data.length === 0) {
             const booksToAdd = [
-                { name: "To Kill a Mockingbird", author: "Harper Lee", publisher: "J.B. Lippincott & Co.", year: 1960, numberOfPages: 281, numberOfCopies: 5 },
-                { name: "1984", author: "George Orwell", publisher: "Secker & Warburg", year: 1949, numberOfPages: 328, numberOfCopies: 4 },
-                { name: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publisher: "Bloomsbury", year: 1997, numberOfPages: 223, numberOfCopies: 7 },
-                { name: "The Great Gatsby", author: "F. Scott Fitzgerald", publisher: "Charles Scribner's Sons", year: 1925, numberOfPages: 180, numberOfCopies: 3 },
-                { name: "The Hobbit", author: "J.R.R. Tolkien", publisher: "George Allen & Unwin", year: 1937, numberOfPages: 310, numberOfCopies: 6 },
-                { name: "Pride and Prejudice", author: "Jane Austen", publisher: "T. Egerton", year: 1813, numberOfPages: 279, numberOfCopies: 4 },
-                { name: "The Catcher in the Rye", author: "J.D. Salinger", publisher: "Little, Brown and Company", year: 1951, numberOfPages: 214, numberOfCopies: 5 },
-                { name: "The Lord of the Rings", author: "J.R.R. Tolkien", publisher: "George Allen & Unwin", year: 1954, numberOfPages: 1178, numberOfCopies: 2 },
-                { name: "The Da Vinci Code", author: "Dan Brown", publisher: "Doubleday", year: 2003, numberOfPages: 454, numberOfCopies: 6 },
-                { name: "The Alchemist", author: "Paulo Coelho", publisher: "HarperTorch", year: 1988, numberOfPages: 208, numberOfCopies: 5 }
+                { name: "To Kill a Mockingbird", author: "Harper Lee", publisher: "J.B. Lippincott & Co.", publish: 1960, pages: 281, copies: 5 },
+                { name: "1984", author: "George Orwell", publisher: "Secker & Warburg", publish: 1949, pages: 328, copies: 4 },
+                { name: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publisher: "Bloomsbury", publish: 1997, pages: 223, copies: 7 },
+                { name: "The Great Gatsby", author: "F. Scott Fitzgerald", publisher: "Charles Scribner's Sons", publish: 1925, pages: 180, copies: 3 },
+                { name: "The Hobbit", author: "J.R.R. Tolkien", publisher: "George Allen & Unwin", publish: 1937, pages: 310, copies: 6 },
+                { name: "Pride and Prejudice", author: "Jane Austen", publisher: "T. Egerton", publish: 1813, pages: 279, copies: 4 },
+                { name: "The Catcher in the Rye", author: "J.D. Salinger", publisher: "Little, Brown and Company", publish: 1951, pages: 214, copies: 5 },
+                { name: "The Lord of the Rings", author: "J.R.R. Tolkien", publisher: "George Allen & Unwin", publish: 1954, pages: 1178, copies: 2 },
+                { name: "The Da Vinci Code", author: "Dan Brown", publisher: "Doubleday", publish: 2003, pages: 454, copies: 6 },
+                { name: "The Alchemist", author: "Paulo Coelho", publisher: "HarperTorch", publish: 1988, pages: 208, copies: 5 }
             ];
 
             booksToAdd.forEach(book =>
-                this.bookManager.addBook(book.name, book.author, book.publisher, book.year, book.numberOfPages, book.numberOfCopies)
+                this.bookManager.addBook(book.name, book.author, book.publisher, book.publish, book.pages, book.copies)
             );
         }
 
-        // Optionally, update the table display if needed
         this.bookEventManager.loadTableData();
-
-        console.log("All Books:", this.bookManager.getAllBooks())
-
-        // bookEventManager.loadTableData()
+        console.log("All Books:", this.bookManager.getAllBooks());
     }
 }
-

@@ -23,27 +23,27 @@
                 <div class="main-header">
                     <div class="main-header-top">
                         <h4 class="title-color">ALL BOOKS:</h4>
-                        <button class="button-style">New Book</button>
+                        <button class="button-style" id="new-book-button">New Book</button>
                     </div>
                     <hr>
                     <div class="main-header-bottom">
                         <div class="main-header-item-left">
                             <label for="sort">Sort by: </label>
-                            <select class="select-style" name="sort" id="sort">
+                            <select class="select-style" name="sort" id="sort-column">
                                 <option value="id">ID</option>
                                 <option value="name">Name</option>
                                 <option value="author">Author</option>
                                 <option value="publisher">Publisher</option>
-                                <option value="publish">Publish Year</option>
+                                <option value="publish">Publish</option>
                                 <option value="pages">Pages</option>
                                 <option value="copies">Copies</option>
                             </select>
-                            <button class="button-style">Sort</button>
+                            <button class="button-style" id="sort-button">Sort</button>
                         </div>
                         <div class="main-header-item-right">
                             <label for="">Search: </label>
-                            <input class="input-style" type="text">
-                            <button class="button-style">Search</button>
+                            <input class="input-style" type="text" id="search-input">
+                            <button class="button-style" id="search-button">Search</button>
                         </div>
                     </div>
                 </div>
@@ -82,31 +82,33 @@
                     </table>
                 </form>
             </div>
-        </main> 
+        </main>
 
-        <div class="pop-up book-add-pop-up">
-            <div class="pop-up-container">
+        <div id="add-pop-up" class="pop-up">
+            <form class="pop-up-container">
                 <h1>New Book</h1>
-                <div class="pop-up-top">
+                <div id="add-pop-up-inputs" class="pop-up-top">
                     <label for="Book">Book : </label>
-                    <input class="input-style" name="Book" type="text">
+                    <input class="input-style" name="Book" type="text" id="new-book">
                     <label for="Author">Author : </label>
-                    <input class="input-style" name="Author" type="text">
+                    <input class="input-style" name="Author" type="text" id ="new-author">
                     <label for="Publisher">Publisher : </label>
-                    <input class="input-style" name="Publisher" type="text">
+                    <input class="input-style" name="Publisher" type="text" id="new-publisher">
+                    <label for="Publisher">Publish Year: </label>
+                    <input class="input-style" name="Publish" type="number" id="new-publish">
                     <label for="Pages">Pages : </label>
-                    <input class="input-style" name="Pages" type="number">
+                    <input class="input-style" name="Pages" type="number" id="new-pages">
                     <label for="Copies">Copies : </label>
-                    <input class="input-style" name="Copies" type="number">
+                    <input class="input-style" name="Copies" type="number" id="new-copies">
                 </div>
                 <div class="pop-up-bottom">
-                    <button class="button-style">Cancel</button>
-                    <button class="button-style">Create</button>
+                    <button class="button-style" id="new-cancel-button">Cancel</button>
+                    <button class="button-style" id="new-create-button">Create</button>
                 </div>
-            </div>
+            </form>
         </div>
 
-        <div class="pop-up book-edit-pop-up">
+        <div class="pop-up">
             <div class="pop-up-container">
                 <h1>Edit Book</h1>
                 <div class="pop-up-top">
