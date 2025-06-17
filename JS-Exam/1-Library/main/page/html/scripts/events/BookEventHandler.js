@@ -171,10 +171,10 @@ export class BookEventHandler {
         pages: parseInt(document.getElementById("edit-pages").value),
         copies: parseInt(document.getElementById("edit-copies").value),
       };
-
+      
+      //
       console.log("Updating book with values:", updatedBook);
 
-      // Validate that no fields are empty
       for (const inputField in updatedBook) {
         if (updatedBook[inputField] === "" || isNaN(updatedBook[inputField])) {
           alert(`Please fill out the ${inputField} field with a valid value.`);
@@ -182,7 +182,6 @@ export class BookEventHandler {
         }
       }
 
-      // Update the book in the manager
       const success = this.bookManager.updateBook(updatedBook);
       if (success) {
         this.books = this.bookManager.getAllBooks();
@@ -202,7 +201,7 @@ export class BookEventHandler {
     }
     const success = this.bookManager.deleteBook(bookId);
     console.log("Deletion successful:", success);
-    this.books = this.bookManager.getAllBooks(); // Refresh books after deletion
+    this.books = this.bookManager.getAllBooks();
     this.loadBookTableData();
   }
 
@@ -223,12 +222,12 @@ export class BookEventHandler {
     console.log("Search query:", query);
 
     if (!query) {
-      this.loadBookTableData(this.books); // Show all books if query is empty
+      this.loadBookTableData(this.books);
       return;
     }
 
     const filteredBooks = this.books.filter((book) => {
-      // Check all relevant fields for a match
+
       return (
         book.name.toLowerCase().includes(query) ||
         book.author.toLowerCase().includes(query) ||
@@ -238,8 +237,8 @@ export class BookEventHandler {
         book.copies.toString().includes(query)
       );
     });
-    console.log("Filtered books count:", filteredBooks.length); // Debug the number of matches
-    this.loadBookTableData(filteredBooks); // Render only the filtered results
+    console.log("Filtered books count:", filteredBooks.length); 
+    this.loadBookTableData(filteredBooks);
   }
 
   resetNewBookForm() {
@@ -259,6 +258,6 @@ export class BookEventHandler {
     document.getElementById("edit-pages").value = "";
     document.getElementById("edit-copies").value = "";
     const editPopUp = document.getElementById("edit-pop-up");
-    delete editPopUp.dataset.bookId; // Clear stored book ID
+    delete editPopUp.dataset.bookId; 
   }
 }
