@@ -52,8 +52,8 @@
                             <th>Phone Number</th>
                             <th>Edit</th>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody class="visitor-table-body">
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>Visitor</td>
                                 <td>Phone Number</td>
@@ -61,18 +61,15 @@
                                     <button class="edit-buttons-style">
                                         <img class="button-icons-style" src="icon/pencil.png" alt="Edit">
                                     </button>
-                                    <button class="edit-buttons-style">
-                                        <img class="button-icons-style" src="icon/trash-xmark.png" alt="Edit">
-                                    </button>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </form>
             </div>
         </main> 
 
-        <div class="pop-up visitor-add-pop-up">
+        <div id="add-pop-up" class="pop-up">
             <div class="pop-up-container">
                 <h1>New Visitor</h1>
                 <div class="pop-up-top">
@@ -88,7 +85,7 @@
             </div>
         </div>
 
-        <div class="pop-up visitor-edit-pop-up">
+        <div id="edit-pop-up" class="pop-up">
             <div class="pop-up-container">
                 <h1>Edit Visitor</h1>
                 <div class="pop-up-top">
@@ -104,5 +101,6 @@
             </div>
         </div>
     </div>
+    <script type="module" src="scripts/events/VisitorEventManager.js"></script>
 </body>
 </html>
