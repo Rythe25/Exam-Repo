@@ -60,7 +60,7 @@
                             <th>Copies</th>
                             <th>Edit</th>
                         </thead>
-                        <tbody class="table-body">
+                        <tbody class="book-table-body">
                             <!-- <tr>
                                 <td>1</td>
                                 <td>BookName</td>
@@ -132,6 +132,9 @@
             </div>
         </div>
     </div>
-    <script type="module" src="scripts/events/BookEventManager.js"></script>
+    <script type="module">
+        import { EventHandler } from './scripts/events/EventHandler.js';
+        new EventHandler();
+    </script>
 </body>
 </html>

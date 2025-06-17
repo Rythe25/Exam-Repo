@@ -1,7 +1,7 @@
 export class Visitor {
-    constructor(name, age, phone) {
-        this.name = name
-        this.age = age
-        this.phone = phone
+    constructor(id, name, phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
     }
 }

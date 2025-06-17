@@ -16,36 +16,48 @@ export class VisitorManager extends Manager {
         return this.#instance;
     }
 
-    addVisitor(name, age, phone) {
-        const visitor = new Visitor(name, age, phone);
+    addVisitor(name, phone) {
+        const visitor = new Visitor(++this.lastId, name, phone);
         this.data.push(visitor);
         this.storeData();
         return visitor;
     }
 
-    updateVisitor(id, name, age, phone) {
-        const index = this.indexOf(id);
-        if (index === -1) return null;
-
-        const visitor = this.data[index];
-        visitor.name = name;
-        visitor.age = age;
-        visitor.phone = phone;
-        this.storeData();
-        return visitor;
+    updateVisitor(visitorInfo) {
+        const index = this.indexOf(visitorInfo.id);
+        if (index !== -1) {
+            Object.assign(this.data[index], visitorInfo);
+            this.storeData();
+        }
+        return index !== -1;
     }
 
-    deleteVisitor(id) {
-        const index = this.indexOf(id);
-        if (index === -1) return null;
-        
-        const visitor = this.data[index];
-        this.data.splice(index, 1);
-        this.storeData();
-        return visitor;
+    deleteVisitor(visitorId) {
+        const index = this.indexOf(visitorId);
+        if (index !== -1) {
+        this.data.splice(index, 1); 
+        this.data.forEach((visitor, i) => {
+            visitor.id = i + 1; 
+        });
+        this.lastId = this.data.length; 
+        this.storeData(); 
+        }
+        return index !== -1;
+    }
+
+    getBookById(id) {
+        return this.data.find((b) => b.id === id);
+    }
+
+    getLastId() {
+        return this.lastId;
     }
 
     getAllVisitors() {
         return this.data;
+    }
+
+    indexOf(id) {
+        return this.data.findIndex((b) => b.id === id);
     }
 }

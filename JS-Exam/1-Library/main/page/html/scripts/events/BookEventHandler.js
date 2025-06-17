@@ -3,91 +3,46 @@ import { BookManager } from "../managers/BookManager.js";
 export class BookEventHandler {
   constructor() {
     this.bookManager = BookManager.getInstance();
-    this.books = this.bookManager.getAllBooks(); // Initial load of books
-    this.loadBookData();
-    this.loadTableData();
+    this.books = this.bookManager.getAllBooks();
+    this.loadBookTableData();
     this.initBookEvent();
     this.initAddBookEvent();
     this.initEditBookEvent();
   }
 
-  loadBookData() {
-    //window.localStorage.clear(); // Clear localStorage for testing purposes
-
-    let storedData = JSON.parse(window.localStorage.getItem("book")) || {
-      data: [],
-    };
-
-    if (
-      storedData.data.length === 0 &&
-      this.bookManager.getAllBooks().length === 0
-    ) {
-      const booksToAdd = [
-        {
-          name: "To Kill a Mockingbird",
-          author: "Harper Lee",
-          publisher: "J.B. Lippincott & Co.",
-          publish: 1960,
-          pages: 281,
-          copies: 5,
-        },
-        {
-          name: "1984",
-          author: "George Orwell",
-          publisher: "Secker & Warburg",
-          publish: 1949,
-          pages: 328,
-          copies: 4,
-        },
-        {
-          name: "Harry Potter and the Sorcerer's Stone",
-          author: "J.K. Rowling",
-          publisher: "Bloomsbury",
-          publish: 1997,
-          pages: 223,
-          copies: 7,
-        },
-        {
-          name: "The Great Gatsby",
-          author: "F. Scott Fitzgerald",
-          publisher: "Charles Scribner's Sons",
-          publish: 1925,
-          pages: 180,
-          copies: 3,
-        },
-        {
-          name: "The Hobbit",
-          author: "J.R.R. Tolkien",
-          publisher: "George Allen & Unwin",
-          publish: 1937,
-          pages: 310,
-          copies: 6,
-        },
-      ];
-
-      booksToAdd.forEach((book) =>
-        this.bookManager.addBook(
-          book.name,
-          book.author,
-          book.publisher,
-          book.publish,
-          book.pages,
-          book.copies
-        )
-      );
-    }
-
-    this.loadTableData();
-    console.log("All Books:", this.bookManager.getAllBooks());
+  loadBookTableData(booksToDisplay = this.books) {
+    const tableBody = document.querySelector(".book-table-body");
+    tableBody.innerHTML = "";
+    booksToDisplay.forEach((book) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+                <td>${book.id}</td>
+                <td>${book.name}</td>
+                <td>${book.author}</td>
+                <td>${book.publisher}</td>
+                <td>${book.publish}</td>
+                <td>${book.pages}</td>
+                <td>${book.copies}</td>
+                <td>
+                    <button class="edit-buttons-style">
+                        <img class="button-icons-style" src="icon/pencil.png" alt="Edit">
+                    </button>
+                    <button class="edit-buttons-style">
+                        <img class="button-icons-style" src="icon/trash-xmark.png" alt="Delete">
+                    </button>
+                </td>
+            `;
+      tableBody.appendChild(row);
+    });
   }
 
   initBookEvent() {
-    const tableBody = document.querySelector(".table-body");
+    const tableBody = document.querySelector(".book-table-body");
     tableBody.addEventListener("click", (event) => {
       const deleteButton = event.target.closest("button img[alt='Delete']");
       if (deleteButton) {
         const row = deleteButton.closest("tr");
-        const id = parseInt(row.cells[0].textContent); // Get ID from first column
+        const id = parseInt(row.cells[0].textContent);
         this.deleteBook(id);
       }
     });
@@ -112,19 +67,73 @@ export class BookEventHandler {
     });
   }
 
+  initAddBookEvent() {
+    console.log("Initializing new book event handlers...");
+    const addBookButton = document.getElementById("new-book-button");
+    const addBookPopUp = document.getElementById("add-pop-up");
+
+    addBookButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      addBookPopUp.classList.add("active-pop-up");
+    });
+
+    const addBookCancelButton = document.getElementById("new-cancel-button");
+    addBookCancelButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      addBookPopUp.classList.remove("active-pop-up");
+      this.resetNewBookForm();
+    });
+
+    const addBookCreateButton = document.getElementById("new-create-button");
+    addBookCreateButton.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const newBook = {
+        id: this.bookManager.getLastId() + 1,
+        name: document.getElementById("new-book").value,
+        author: document.getElementById("new-author").value,
+        publisher: document.getElementById("new-publisher").value,
+        publish: parseInt(document.getElementById("new-publish").value),
+        pages: parseInt(document.getElementById("new-pages").value),
+        copies: parseInt(document.getElementById("new-copies").value),
+      };
+
+      console.log("Creating new book with values:", newBook);
+
+      for (const inputField in newBook) {
+        if (newBook[inputField] === "") {
+          alert(`Please fill out the ${inputField} field with a valid value.`);
+          return;
+        }
+      }
+
+      this.bookManager.addBook(
+        newBook.name,
+        newBook.author,
+        newBook.publisher,
+        newBook.publish,
+        newBook.pages,
+        newBook.copies
+      );
+      this.books = this.bookManager.getAllBooks();
+      this.loadBookTableData();
+      addBookPopUp.classList.remove("active-pop-up");
+      this.resetNewBookForm();
+    });
+  }
+
   initEditBookEvent() {
     console.log("Initializing edit book event handlers...");
-    const tableBody = document.querySelector(".table-body");
+    const tableBody = document.querySelector(".book-table-body");
     tableBody.addEventListener("click", (event) => {
       event.preventDefault();
       const editButton = event.target.closest("button img[alt='Edit']");
       if (editButton) {
         const row = editButton.closest("tr");
-        const id = parseInt(row.cells[0].textContent); // Get ID from first column
+        const id = parseInt(row.cells[0].textContent);
         const book = this.bookManager.getBookById(id);
         console.log("Populating edit form with book ID:", id, book);
         if (book) {
-          // Populate the edit form with book details
           document.getElementById("edit-book").value = book.name;
           document.getElementById("edit-author").value = book.author;
           document.getElementById("edit-publisher").value = book.publisher;
@@ -134,8 +143,6 @@ export class BookEventHandler {
 
           const editPopUp = document.getElementById("edit-pop-up");
           editPopUp.classList.add("active-pop-up");
-
-          // Store the book ID in a data attribute for use in confirm handler
           editPopUp.dataset.bookId = id;
         }
       }
@@ -179,93 +186,12 @@ export class BookEventHandler {
       const success = this.bookManager.updateBook(updatedBook);
       if (success) {
         this.books = this.bookManager.getAllBooks();
-        this.loadTableData();
+        this.loadBookTableData();
         editPopUp.classList.remove("active-pop-up");
         this.resetEditBookForm();
       } else {
         alert("Failed to update the book. Please try again.");
       }
-    });
-  }
-
-  initAddBookEvent() {
-    console.log("Initializing new book event handlers...");
-    const addBookButton = document.getElementById("new-book-button");
-    const addBookPopUp = document.getElementById("add-pop-up");
-
-    addBookButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      addBookPopUp.classList.add("active-pop-up");
-    });
-
-    const addBookCancelButton = document.getElementById("new-cancel-button");
-    addBookCancelButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      addBookPopUp.classList.remove("active-pop-up");
-      this.resetNewBookForm();
-    });
-
-    const addBookCreateButton = document.getElementById("new-create-button");
-    addBookCreateButton.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      const newBook = {
-        id: this.bookManager.getLastId() + 1, // Increment lastId for new book
-        name: document.getElementById("new-book").value,
-        author: document.getElementById("new-author").value,
-        publisher: document.getElementById("new-publisher").value,
-        publish: parseInt(document.getElementById("new-publish").value),
-        pages: parseInt(document.getElementById("new-pages").value),
-        copies: parseInt(document.getElementById("new-copies").value),
-      };
-
-      console.log("Creating new book with values:", newBook);
-
-      for (const inputField in newBook) {
-        if (newBook[inputField] === "" || isNaN(newBook[inputField])) {
-          alert(`Please fill out the ${inputField} field with a valid value.`);
-          return;
-        }
-      }
-
-      this.bookManager.addBook(
-        newBook.name,
-        newBook.author,
-        newBook.publisher,
-        newBook.publish,
-        newBook.pages,
-        newBook.copies
-      );
-      this.books = this.bookManager.getAllBooks();
-      this.loadTableData();
-      addBookPopUp.classList.remove("active-pop-up");
-      this.resetNewBookForm();
-    });
-  }
-
-  loadTableData(booksToDisplay = this.books) {
-    const tableBody = document.querySelector(".table-body");
-    tableBody.innerHTML = "";
-    booksToDisplay.forEach((book) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-                <td>${book.id}</td>
-                <td>${book.name}</td>
-                <td>${book.author}</td>
-                <td>${book.publisher}</td>
-                <td>${book.publish}</td>
-                <td>${book.pages}</td>
-                <td>${book.copies}</td>
-                <td>
-                    <button class="edit-buttons-style">
-                        <img class="button-icons-style" src="icon/pencil.png" alt="Edit">
-                    </button>
-                    <button class="edit-buttons-style">
-                        <img class="button-icons-style" src="icon/trash-xmark.png" alt="Delete">
-                    </button>
-                </td>
-            `;
-      tableBody.appendChild(row);
     });
   }
 
@@ -277,7 +203,7 @@ export class BookEventHandler {
     const success = this.bookManager.deleteBook(bookId);
     console.log("Deletion successful:", success);
     this.books = this.bookManager.getAllBooks(); // Refresh books after deletion
-    this.loadTableData();
+    this.loadBookTableData();
   }
 
   sortTable(column) {
@@ -289,7 +215,7 @@ export class BookEventHandler {
       if (valA > valB) return 1;
       return 0;
     });
-    this.loadTableData();
+    this.loadBookTableData();
   }
 
   searchTable(query) {
@@ -297,7 +223,7 @@ export class BookEventHandler {
     console.log("Search query:", query);
 
     if (!query) {
-      this.loadTableData(this.books); // Show all books if query is empty
+      this.loadBookTableData(this.books); // Show all books if query is empty
       return;
     }
 
@@ -313,7 +239,7 @@ export class BookEventHandler {
       );
     });
     console.log("Filtered books count:", filteredBooks.length); // Debug the number of matches
-    this.loadTableData(filteredBooks); // Render only the filtered results
+    this.loadBookTableData(filteredBooks); // Render only the filtered results
   }
 
   resetNewBookForm() {
@@ -336,4 +262,3 @@ export class BookEventHandler {
     delete editPopUp.dataset.bookId; // Clear stored book ID
   }
 }
-

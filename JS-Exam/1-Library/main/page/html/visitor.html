@@ -24,22 +24,22 @@
                 <div class="main-header">
                     <div class="main-header-top">
                         <h4 class="title-color">ALL VISITORS:</h4>
-                        <button class="button-style">New Visitor</button>
+                        <button class="button-style" id="new-visitor-button">New Visitor</button>
                     </div>
                     <hr>
                     <div class="main-header-bottom">
                         <div class="main-header-item-left">
                             <label for="sort">Sort by: </label>
-                            <select class="select-style" name="sort" id="sort">
+                            <select class="select-style" name="sort" id="sort-column">
                                 <option value="id">ID</option>
                                 <option value="name">Name</option>
                             </select>
-                            <button class="button-style">Sort</button>
+                            <button class="button-style" id="sort-button">Sort</button>
                         </div>
                         <div class="main-header-item-right">
                             <label for="">Search: </label>
-                            <input class="input-style" type="text">
-                            <button class="button-style">Search</button>
+                            <input class="input-style" type="text" id="search-input">
+                            <button class="button-style" id="search-button">Search</button>
                         </div>
                     </div>
                 </div>
@@ -69,18 +69,18 @@
             </div>
         </main> 
 
-        <div id="add-pop-up" class="pop-up">
+        <div id="add-visitor-pop-up" class="pop-up">
             <div class="pop-up-container">
                 <h1>New Visitor</h1>
                 <div class="pop-up-top">
                     <label for="Name">Name : </label>
-                    <input class="input-style" name="Name" type="text">
+                    <input class="input-style" name="Name" type="text" id="add-name">
                     <label for="PhoneNumber">Phone Number : </label>
-                    <input class="input-style" name="PhoneNumber" type="text">
+                    <input class="input-style" name="PhoneNumber" type="text" id="add-phone">
                 </div>
                 <div class="pop-up-bottom">
-                    <button class="button-style">Cancel</button>
-                    <button class="button-style">Create</button>
+                    <button class="button-style" id="add-cancel-button">Cancel</button>
+                    <button class="button-style" id="add-create-button">Create</button>
                 </div>
             </div>
         </div>
@@ -90,17 +90,20 @@
                 <h1>Edit Visitor</h1>
                 <div class="pop-up-top">
                     <label for="Name">Name : </label>
-                    <input class="input-style" name="Name" type="text">
+                    <input class="input-style" name="Name" type="text" id="edit-name">
                     <label for="PhoneNumber">Phone Number : </label>
-                    <input class="input-style" name="PhoneNumber" type="text">
+                    <input class="input-style" name="PhoneNumber" type="text" id="edit-phone">
                 </div>
                 <div class="pop-up-bottom">
-                    <button class="button-style">Cancel</button>
-                    <button class="button-style">Confirm</button>
+                    <button class="button-style" id="edit-cancel-button">Cancel</button>
+                    <button class="button-style" id="edit-confirm-button">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
-    <script type="module" src="scripts/events/VisitorEventManager.js"></script>
+    <script type="module">
+        import { EventHandler } from './scripts/events/EventHandler.js';
+        new EventHandler();
+    </script>
 </body>
 </html>
