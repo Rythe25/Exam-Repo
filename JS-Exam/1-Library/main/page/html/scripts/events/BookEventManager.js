@@ -8,6 +8,7 @@ export class BookEventManager {
         this.loadTableData();
         this.initBookEvent();
         this.initAddBookEvent();
+        this.initEditBookEvent();
     }
 
     initBookEvent() {
@@ -41,6 +42,82 @@ export class BookEventManager {
         });
     }
 
+    initEditBookEvent() {
+        console.log("Initializing edit book event handlers...");
+        const tableBody = document.querySelector(".table-body");
+        tableBody.addEventListener("click", (event) => {
+            event.preventDefault();
+            const editButton = event.target.closest("button img[alt='Edit']");
+            if (editButton) {
+                const row = editButton.closest("tr");
+                const id = parseInt(row.cells[0].textContent); // Get ID from first column
+                const book = this.bookManager.getBookById(id);
+                console.log("Populating edit form with book ID:", id, book);
+                if (book) {
+                    // Populate the edit form with book details
+                    document.getElementById("edit-book").value = book.name;
+                    document.getElementById("edit-author").value = book.author;
+                    document.getElementById("edit-publisher").value = book.publisher;
+                    document.getElementById("edit-publish").value = book.publish;
+                    document.getElementById("edit-pages").value = book.pages;
+                    document.getElementById("edit-copies").value = book.copies;
+
+                    const editPopUp = document.getElementById("edit-pop-up");
+                    editPopUp.classList.add("active-pop-up");
+
+                    // Store the book ID in a data attribute for use in confirm handler
+                    editPopUp.dataset.bookId = id;
+                }
+            }
+        });
+
+        const editCancelButton = document.getElementById("edit-cancel-button");
+        editCancelButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            const editPopUp = document.getElementById("edit-pop-up");
+            editPopUp.classList.remove("active-pop-up");
+            this.resetEditBookForm();
+        });
+
+        const editConfirmButton = document.getElementById("edit-confirm-button");
+        editConfirmButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            const editPopUp = document.getElementById("edit-pop-up");
+            const bookId = parseInt(editPopUp.dataset.bookId);
+
+            const updatedBook = {
+                id: bookId,
+                name: document.getElementById("edit-book").value,
+                author: document.getElementById("edit-author").value,
+                publisher: document.getElementById("edit-publisher").value,
+                publish: parseInt(document.getElementById("edit-publish").value),
+                pages: parseInt(document.getElementById("edit-pages").value),
+                copies: parseInt(document.getElementById("edit-copies").value)
+            };
+
+            console.log("Updating book with values:", updatedBook);
+
+            // Validate that no fields are empty
+            for (const inputField in updatedBook) {
+                if (updatedBook[inputField] === "" || isNaN(updatedBook[inputField])) {
+                    alert(`Please fill out the ${inputField} field with a valid value.`);
+                    return;
+                }
+            }
+
+            // Update the book in the manager
+            const success = this.bookManager.updateBook(updatedBook);
+            if (success) {
+                this.books = this.bookManager.getAllBooks();
+                this.loadTableData();
+                editPopUp.classList.remove("active-pop-up");
+                this.resetEditBookForm();
+            } else {
+                alert("Failed to update the book. Please try again.");
+            }
+        });
+    }
+
     initAddBookEvent() {
         console.log("Initializing new book event handlers...");
         const addBookButton = document.getElementById("new-book-button");
@@ -49,7 +126,7 @@ export class BookEventManager {
         addBookButton.addEventListener("click", (event) => {
             event.preventDefault();
             addBookPopUp.classList.add("active-pop-up");
-        })
+        });
 
         const addBookCancelButton = document.getElementById("new-cancel-button");
         addBookCancelButton.addEventListener("click", (event) => {
@@ -75,13 +152,13 @@ export class BookEventManager {
             console.log("Creating new book with values:", newBook);
 
             for (const inputField in newBook) {
-                if (newBook[inputField] === "") {
-                    alert(`Please fill out the ${inputField} field.`);
+                if (newBook[inputField] === "" || isNaN(newBook[inputField])) {
+                    alert(`Please fill out the ${inputField} field with a valid value.`);
                     return;
                 }
             }
 
-            this.bookManager.addBook(newBook.id, newBook.name, newBook.author, newBook.publisher, newBook.publish, newBook.pages, newBook.copies);
+            this.bookManager.addBook(newBook.name, newBook.author, newBook.publisher, newBook.publish, newBook.pages, newBook.copies);
             this.books = this.bookManager.getAllBooks();
             this.loadTableData();
             addBookPopUp.classList.remove("active-pop-up");
@@ -169,5 +246,16 @@ export class BookEventManager {
         document.getElementById("new-publish").value = "";
         document.getElementById("new-pages").value = "";
         document.getElementById("new-copies").value = "";
+    }
+
+    resetEditBookForm() {
+        document.getElementById("edit-book").value = "";
+        document.getElementById("edit-author").value = "";
+        document.getElementById("edit-publisher").value = "";
+        document.getElementById("edit-publish").value = "";
+        document.getElementById("edit-pages").value = "";
+        document.getElementById("edit-copies").value = "";
+        const editPopUp = document.getElementById("edit-pop-up");
+        delete editPopUp.dataset.bookId; // Clear stored book ID
     }
 }

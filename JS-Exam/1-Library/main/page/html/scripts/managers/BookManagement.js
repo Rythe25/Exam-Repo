@@ -46,6 +46,10 @@ export class BookManagement extends Manager {
         return index !== -1;
     }
 
+    getBookById(id) {
+        return this.data.find(b => b.id === id);
+    }
+
     getLastId(){
         return this.lastId;
     }

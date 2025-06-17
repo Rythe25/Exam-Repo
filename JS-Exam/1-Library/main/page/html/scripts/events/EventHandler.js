@@ -9,15 +9,12 @@ export class EventHandler {
     }
 
     insertData() {
-        window.localStorage.clear();
-
-        if (this.bookManager.getAllBooks().length > 0) {
-            console.log("Books already exist in localStorage.");
-            return;
-        }
-
+        //window.localStorage.clear(); // Clear localStorage for testing purposes
+        // Check if 'book' key exists in localStorage
         let storedData = JSON.parse(window.localStorage.getItem('book')) || { data: [] };
-        if (storedData.data.length === 0) {
+
+        // Only add default books if no data exists in localStorage
+        if (storedData.data.length === 0 && this.bookManager.getAllBooks().length === 0) {
             const booksToAdd = [
                 { name: "To Kill a Mockingbird", author: "Harper Lee", publisher: "J.B. Lippincott & Co.", publish: 1960, pages: 281, copies: 5 },
                 { name: "1984", author: "George Orwell", publisher: "Secker & Warburg", publish: 1949, pages: 328, copies: 4 },

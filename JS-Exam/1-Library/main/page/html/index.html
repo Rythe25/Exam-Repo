@@ -108,24 +108,26 @@
             </form>
         </div>
 
-        <div class="pop-up">
+        <div id="edit-pop-up" class="pop-up">
             <div class="pop-up-container">
                 <h1>Edit Book</h1>
-                <div class="pop-up-top">
+                <div id="edit-pop-up-inputs" class="pop-up-top">
                     <label for="Book">Book : </label>
-                    <input class="input-style" name="Book" type="text">
+                    <input class="input-style" name="Book" type="text" id="edit-book">
                     <label for="Author">Author : </label>
-                    <input class="input-style" name="Author" type="text">
+                    <input class="input-style" name="Author" type="text" id="edit-author">
                     <label for="Publisher">Publisher : </label>
-                    <input class="input-style" name="Publisher" type="text">
+                    <input class="input-style" name="Publisher" type="text" id="edit-publisher">
+                    <label for="Publisher">Publish Year: </label>
+                    <input class="input-style" name="Publish" type="number" id="edit-publish">
                     <label for="Pages">Pages : </label>
-                    <input class="input-style" name="Pages" type="number">
+                    <input class="input-style" name="Pages" type="number" id="edit-pages">
                     <label for="Copies">Copies : </label>
-                    <input class="input-style" name="Copies" type="number">
+                    <input class="input-style" name="Copies" type="number" id="edit-copies">
                 </div>
                 <div class="pop-up-bottom">
-                    <button class="button-style">Cancel</button>
-                    <button class="button-style">Confirm</button>
+                    <button class="button-style" id="edit-cancel-button">Cancel</button>
+                    <button class="button-style" id="edit-confirm-button">Confirm</button>
                 </div>
             </div>
         </div>
