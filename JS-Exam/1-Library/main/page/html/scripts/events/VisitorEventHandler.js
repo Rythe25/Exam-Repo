@@ -52,7 +52,7 @@ export class VisitorEventHandler {
   }
 
   initAddVisitorEvent() {
-      console.log("Initializing new visitor event handlers...");
+      // console.log("Initializing new visitor event handlers...");
 
       const addVisitorButton = document.getElementById("new-visitor-button");
       const addVisitorPopUp = document.getElementById("add-visitor-pop-up");
@@ -80,7 +80,7 @@ export class VisitorEventHandler {
               phone: document.getElementById('add-phone').value
           };
 
-          console.log("createing new book with values: ", newVisitor);
+          // console.log("createing new book with values: ", newVisitor);
 
           for (const inputField in newVisitor){
               if (newVisitor[inputField] === ''){
@@ -99,7 +99,7 @@ export class VisitorEventHandler {
     }
 
     initEditVisitorEvent() {
-      console.log("Innit visitor event");
+      // console.log("Innit visitor event");
 
       const tableBody = document.querySelector('.visitor-table-body');
       tableBody.addEventListener('click', (event) =>  {
@@ -110,7 +110,7 @@ export class VisitorEventHandler {
           const row = editButton.closest('tr');
           const id = parseInt(row.cells[0].textContent);
           const visitor = this.visitorManager.getVisitorById(id);
-          console.log("Populating edit form with visitor ID:", id, visitor);
+          // console.log("Populating edit form with visitor ID:", id, visitor);
           if (visitor){
             document.getElementById('edit-name').value = visitor.name;
             document.getElementById('edit-phone').value = visitor.phone;
@@ -142,7 +142,7 @@ export class VisitorEventHandler {
           phone: document.getElementById("edit-phone").value,
         };
         
-        console.log("Updating visitor with values:", updatedVisitor);
+        // console.log("Updating visitor with values:", updatedVisitor);
 
         for (const inputField in updatedVisitor) {
           if (updatedVisitor[inputField] === "") {
@@ -177,7 +177,7 @@ export class VisitorEventHandler {
 
     searchTable(query){
         query = query.trim().toLowerCase();
-        console.log("Search query:", query);
+        // console.log("Search query:", query);
 
         if (!query) {
             this.loadVisitorTableData(this.visitors); 
@@ -189,7 +189,7 @@ export class VisitorEventHandler {
                 visitor.name.toLowerCase().includes(query) || visitor.phone.includes(query) 
             );
         });
-        console.log("Filtered visitors count:", filteredVisitors.length); 
+        // console.log("Filtered visitors count:", filteredVisitors.length); 
         this.loadVisitorTableData(filteredVisitors); 
     }
 

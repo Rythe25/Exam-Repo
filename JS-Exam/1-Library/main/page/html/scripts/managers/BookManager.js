@@ -42,31 +42,25 @@ export class BookManager extends Manager {
 
   deleteBook(bookId) {
     const index = this.indexOf(bookId);
-    if (index !== -1) {
-      this.data.splice(index, 1); // Remove the book
-      // Reassign IDs to remaining books
-      this.data.forEach((book, i) => {
-        book.id = i + 1; // Re-index to 1, 2, 3, ...
-      });
-      this.lastId = this.data.length; // Update lastId to the new count
-      this.storeData(); // Save the updated data
+    if (index === -1) {
+      return false;
     }
-    return index !== -1;
+
+    const book = this.data[index];
+    if (book.isBorrowed !== 0) {
+      alert("Borrowed Book cannot be deleted!");
+      return false;
+    }
+
+    this.data.splice(index, 1);
+    this.data.forEach((book, i) => { book.id = i + 1; });
+    this.lastId = this.data.length; 
+    this.storeData();
+    return true;
   }
 
-  getBookById(id) {
-    return this.data.find((b) => b.id === id);
-  }
-
-  getLastId() {
-    return this.lastId;
-  }
-
-  getAllBooks() {
-    return this.data;
-  }
-
-  indexOf(id) {
-    return this.data.findIndex((b) => b.id === id);
-  }
+  getBookById(id) { return this.data.find((b) => b.id === id); }
+  getLastId() { return this.lastId; }
+  getAllBooks() { return this.data; }
+  indexOf(id) { return this.data.findIndex((b) => b.id === id);}
 }

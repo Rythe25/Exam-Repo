@@ -45,19 +45,8 @@ export class VisitorManager extends Manager {
         return index !== -1;
     }
 
-    getVisitorById(id) {
-        return this.data.find((b) => b.id === id);
-    }
-
-    getLastId() {
-        return this.lastId;
-    }
-
-    getAllVisitors() {
-        return this.data;
-    }
-
-    indexOf(id) {
-        return this.data.findIndex((b) => b.id === id);
-    }
+    getVisitorById(id) { return this.data.find((b) => b.id === id);}
+    getLastId() { return this.lastId; }
+    getAllVisitors() { return this.data; }
+    indexOf(id) { return this.data.findIndex((b) => b.id === id); }
 }

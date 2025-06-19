@@ -4,6 +4,7 @@ import { VisitorManager } from "../managers/VisitorManager.js";
 import { VisitorEventHandler } from "./VisitorEventHandler.js";
 import { CardManager } from "../managers/CardManager.js";
 import { CardEventHandler } from "./CardEventHandler.js";
+import { StatisticEventHandler } from "./StatisticEventHandler.js";
 
 export class EventHandler {
   constructor() {
@@ -11,22 +12,26 @@ export class EventHandler {
   }
 
   initialize() {
-    // window.localStorage.clear();
+    // window.localStorage.clear(); // Clear all storage for testing
     const currentPage = window.location.pathname;
-    console.log("Current page:", currentPage);
+    // console.log("Current page:", currentPage);
 
     switch (true) {
       case currentPage.includes("index.html"):
-        console.log("Initializing BookEventHandler...");
+        // console.log("Initializing BookEventHandler...");
         this.loadBookData();
         break;
       case currentPage.includes("visitor.html"):
-        console.log("Initializing VisitorEventHandler...");
+        // console.log("Initializing VisitorEventHandler...");
         this.loadVisitorData();
         break;
       case currentPage.includes("card.html"):
-        console.log("Initializing CardEventHandler...");
+        // console.log("Initializing CardEventHandler...");
         this.loadCardData();
+        break;
+      case currentPage.includes("statistic.html"):
+        // console.log("Initializing StatisticHandler...");
+        new StatisticEventHandler();
         break;
       default:
         console.warn("No matching event handler for page:", currentPage);
@@ -35,7 +40,7 @@ export class EventHandler {
   }
 
   loadBookData() {
-    // window.localStorage.removeItem('book'); // Clear localStorage for testing purposes
+    // window.localStorage.removeItem('book'); // Clear localStorage for testing 
     const bookManager = new BookManager();
     const bookEventHandler = new BookEventHandler();
     let storedData = JSON.parse(window.localStorage.getItem("book")) || {data: [],};
@@ -65,11 +70,11 @@ export class EventHandler {
     }
 
     bookEventHandler.loadBookTableData();
-    console.log("All Books:", bookManager.getAllBooks());
+    // console.log("All Books:", bookManager.getAllBooks());
   }
 
   loadVisitorData() {
-    // window.localStorage.removeItem('visitor'); // Clear localStorage for testing purposes
+    // window.localStorage.removeItem('visitor'); // Clear localStorage for testing 
     const visitorManager = new VisitorManager();
     const visitorEventHandler = new VisitorEventHandler();
     let storedData = JSON.parse(window.localStorage.getItem("visitor")) || {data: [],};
@@ -87,11 +92,11 @@ export class EventHandler {
     }
 
     visitorEventHandler.loadVisitorTableData();
-    console.log("All Visitors:", visitorManager.getAllVisitors());
+    // console.log("All Visitors:", visitorManager.getAllVisitors());
   }
 
   loadCardData(){
-    // window.localStorage.removeItem('card'); // Clear localStorage for testing purposes
+    // window.localStorage.removeItem('card'); // Clear localStorage for testing 
     const cardManager = new CardManager();
     const cardEventHandler = new CardEventHandler();
     let storedData = JSON.parse(window.localStorage.getItem("card")) || {data: [],};
@@ -114,7 +119,7 @@ export class EventHandler {
     }
 
     cardEventHandler.loadCardTableData();
-    console.log("All cards:", cardManager.getAllCards());
+    // console.log("All cards:", cardManager.getAllCards());
 
   }
 }

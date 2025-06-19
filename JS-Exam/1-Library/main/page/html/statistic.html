@@ -42,8 +42,8 @@
                             <th>Pages</th>
                             <th>Copies</th>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody class="book-table-body">
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>BookName</td>
                                 <td>AuthorName</td>
@@ -51,7 +51,7 @@
                                 <td>Publish</td>
                                 <td>Pages</td>
                                 <td>Copies</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </form>
@@ -66,18 +66,21 @@
                             <th>Name</th>
                             <th class="th-phone">Phone Number</th>
                         </thead>
-                        <tbody class="table-body">
-                            <tr>
+                        <tbody class="visitor-table-body">
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>Visitor</td>
                                 <td class="th-phone">Phone Number</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </form>
-                
             </div>
         </main> 
     </div>
+    <script type="module">
+        import { EventHandler } from './scripts/events/EventHandler.js';
+        new EventHandler();
+    </script>
 </body>
 </html>

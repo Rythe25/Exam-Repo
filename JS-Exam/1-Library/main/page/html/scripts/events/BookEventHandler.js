@@ -68,7 +68,7 @@ export class BookEventHandler {
   }
 
   initAddBookEvent() {
-    console.log("Initializing new book event handlers...");
+    // console.log("Initializing new book event handlers...");
     const addBookButton = document.getElementById("new-book-button");
     const addBookPopUp = document.getElementById("add-pop-up");
 
@@ -98,7 +98,7 @@ export class BookEventHandler {
         copies: parseInt(document.getElementById("new-copies").value),
       };
 
-      console.log("Creating new book with values:", newBook);
+      // console.log("Creating new book with values:", newBook);
 
       for (const inputField in newBook) {
         if (newBook[inputField] === "") {
@@ -132,7 +132,7 @@ export class BookEventHandler {
         const row = editButton.closest("tr");
         const id = parseInt(row.cells[0].textContent);
         const book = this.bookManager.getBookById(id);
-        console.log("Populating edit form with book ID:", id, book);
+        // console.log("Populating edit form with book ID:", id, book);
         if (book) {
           document.getElementById("edit-book").value = book.name;
           document.getElementById("edit-author").value = book.author;
@@ -172,7 +172,7 @@ export class BookEventHandler {
         copies: parseInt(document.getElementById("edit-copies").value),
       };
       
-      console.log("Updating book with values:", updatedBook);
+      // console.log("Updating book with values:", updatedBook);
 
       for (const inputField in updatedBook) {
         if (updatedBook[inputField] === "") {
@@ -194,12 +194,12 @@ export class BookEventHandler {
   }
 
   deleteBook(bookId) {
-    console.log("Delete book with ID:", bookId);
+    // console.log("Delete book with ID:", bookId);
     if (!confirm("Are you sure you want to delete this book?")) {
       return;
     }
     const success = this.bookManager.deleteBook(bookId);
-    console.log("Deletion successful:", success);
+    // console.log("Deletion successful:", success);
     this.books = this.bookManager.getAllBooks();
     this.loadBookTableData();
   }
@@ -218,7 +218,7 @@ export class BookEventHandler {
 
   searchTable(query) {
     query = query.trim().toLowerCase();
-    console.log("Search query:", query);
+    // console.log("Search query:", query);
 
     if (!query) {
       this.loadBookTableData(this.books);
@@ -236,7 +236,7 @@ export class BookEventHandler {
         book.copies.toString().includes(query)
       );
     });
-    console.log("Filtered books count:", filteredBooks.length); 
+    // console.log("Filtered books count:", filteredBooks.length); 
     this.loadBookTableData(filteredBooks);
   }
 

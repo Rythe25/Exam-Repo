@@ -9,6 +9,7 @@ export class CardEventHandler{
         this.loadCardTableData();
         this.initCardEvent();
         this.initAddCardEvent();
+        this.initReturnBookEvent();
     }
 
     formatDate(date) {
@@ -26,7 +27,7 @@ export class CardEventHandler{
             .replace(/(\d+)\/(\d+)\/(\d+)/, "$2-$1-$3");
     }
 
-    loadCardTableData( cardsToDisplay = this.cards ){
+    loadCardTableData(cardsToDisplay = this.cards) {
         const tableBody = document.querySelector(".card-table-body");
         tableBody.innerHTML = "";
         cardsToDisplay.forEach((card) => {
@@ -37,12 +38,15 @@ export class CardEventHandler{
                 <td>${card.bookId}</td>
                 <td>${this.formatDate(card.borrowDate)}</td>
                 <td>
-                    <button class="edit-buttons-style">
-                        <img class="button-icons-style" src="icon/back.png" alt="Return Book">
-                    </button>
+                    ${card.returnDate ? 
+                        this.formatDate(card.returnDate) : 
+                        `<button class="edit-buttons-style">
+                            <img class="button-icons-style" src="icon/back.png" alt="ReturnBook">
+                        </button>`
+                    }
                 </td>
             `;
-        tableBody.appendChild(row);
+            tableBody.appendChild(row);
         });
     }
 
@@ -68,7 +72,7 @@ export class CardEventHandler{
     }
 
     initAddCardEvent(){
-      console.log("Initializing new card event handlers...");
+    //   console.log("Initializing new card event handlers...");
 
       const addCardButton = document.getElementById("new-card-button");
       const addCardPopUp = document.getElementById("add-card-pop-up");
@@ -98,7 +102,7 @@ export class CardEventHandler{
               returnDate: null
           };
 
-          console.log("createing new book with values: ", newCard);
+        //   console.log("createing new book with values: ", newCard);
 
           for (const inputField in newCard){
               if (newCard[inputField] === ''){
@@ -118,6 +122,25 @@ export class CardEventHandler{
       });
     }
 
+    initReturnBookEvent() {
+        // console.log("Init return card event handler");
+
+        const tableBody = document.querySelector('.card-table-body');
+        tableBody.addEventListener('click', (event) => {
+            event.preventDefault();
+            const returnButton = event.target.closest('button img[alt="ReturnBook"]');
+            if (returnButton) {
+                const row = returnButton.closest("tr");
+                const id = parseInt(row.cells[0].textContent);
+
+                if (!confirm("Are you sure that you want to return this book?")) return;
+
+                this.cardManager.returnBook(id);
+                this.loadCardTableData();
+            }
+        });
+    }
+
     sortTable(column){
         this.cards.sort((a, b) => {
         const isNumeric = ["id", "visitorId", "bookId"].includes(column);
@@ -132,7 +155,7 @@ export class CardEventHandler{
 
     searchTable(query){
         query = query.trim().toLowerCase();
-        console.log("Search query:", query);
+        // console.log("Search query:", query);
 
         if (!query) {
             this.loadCardTableData(); 
@@ -145,7 +168,7 @@ export class CardEventHandler{
                 card.bookId.toString().includes(query)
             );
         });
-        console.log("Filtered cards count:", fitleredCards.length); 
+        // console.log("Filtered cards count:", fitleredCards.length); 
         this.loadCardTableData(fitleredCards); 
     }
 

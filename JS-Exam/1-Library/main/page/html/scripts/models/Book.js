@@ -7,5 +7,6 @@ export class Book {
         this.publish = publish
         this.pages = pages
         this.copies = copies
+        this.isBorrowed = 0;
     }
 }
