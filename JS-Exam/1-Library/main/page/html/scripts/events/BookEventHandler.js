@@ -123,7 +123,7 @@ export class BookEventHandler {
   }
 
   initEditBookEvent() {
-    console.log("Initializing edit book event handlers...");
+    // console.log("Initializing edit book event handlers...");
     const tableBody = document.querySelector(".book-table-body");
     tableBody.addEventListener("click", (event) => {
       event.preventDefault();
@@ -172,11 +172,10 @@ export class BookEventHandler {
         copies: parseInt(document.getElementById("edit-copies").value),
       };
       
-      //
       console.log("Updating book with values:", updatedBook);
 
       for (const inputField in updatedBook) {
-        if (updatedBook[inputField] === "" || isNaN(updatedBook[inputField])) {
+        if (updatedBook[inputField] === "") {
           alert(`Please fill out the ${inputField} field with a valid value.`);
           return;
         }

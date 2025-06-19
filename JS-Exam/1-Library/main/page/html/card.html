@@ -24,25 +24,23 @@
                 <div class="main-header">
                     <div class="main-header-top">
                         <h4 class="title-color">ALL CARDS:</h4>
-                        <button class="button-style">New Card</button>
+                        <button class="button-style" id="new-card-button">New Card</button>
                     </div>
                     <hr>
                     <div class="main-header-bottom">
                         <div class="main-header-item-left">
                             <label for="sort">Sort by: </label>
-                            <select class="select-style" name="sort" id="sort">
+                            <select class="select-style" name="sort" id="sort-column">
                                 <option value="id">ID</option>
-                                <option value="name">VisitorId</option>
-                                <option value="author">BookId</option>
-                                <option value="publisher">Borrow Date</option>
-                                <option value="publish">Return Date</option>
+                                <option value="visitorId">VisitorId</option>
+                                <option value="bookId">BookId</option>
                             </select>
-                            <button class="button-style">Sort</button>
+                            <button class="button-style" id="sort-button">Sort</button>
                         </div>
                         <div class="main-header-item-right">
                             <label for="">Search: </label>
-                            <input class="input-style" type="text">
-                            <button class="button-style">Search</button>
+                            <input class="input-style" type="text" id="search-input">
+                            <button class="button-style" id="search-button">Search</button>
                         </div>
                     </div>
                 </div>
@@ -56,8 +54,8 @@
                             <th>BorrowDate</th>
                             <th>ReturnDate</th>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody class="card-table-body">
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>1</td>
                                 <td>1</td>
@@ -67,32 +65,33 @@
                                         <img class="button-icons-style" src="icon/back.png" alt="Return Book">
                                     </button>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </form>
             </div>
         </main> 
 
-        <div class="pop-up card-add-pop-up">
+        <div id="add-card-pop-up" class="pop-up">
             <div class="pop-up-container">
                 <h1>New Card</h1>
-                <div class="pop-up-top">
+                <div class="pop-up-top" >
                     <label for="VisitorId">VisitorId : </label>
-                    <input class="input-style" name="VisitorId" type="text">
+                    <input class="input-style" name="VisitorId" type="text" id="add-visitorId">
                     <label for="BookId">BookId : </label>
-                    <input class="input-style" name="BookId" type="text">
-                    <label for="BorrowDate">Borrow Date : </label>
-                    <input class="input-style" name="BorrowDate" type="date">
-                    <label for="ReturnDate">Return Date : </label>
-                    <input class="input-style" name="ReturnDate" type="date">
+                    <input class="input-style" name="BookId" type="text" id="add-bookId">
                 </div>
                 <div class="pop-up-bottom">
-                    <button class="button-style">Cancel</button>
-                    <button class="button-style">Create</button>
+                    <button class="button-style" id="add-cancel-button">Cancel</button>
+                    <button class="button-style" id="add-create-button">Create</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="module">
+        import { EventHandler } from './scripts/events/EventHandler.js';
+        new EventHandler();
+    </script>
 </body>
 </html>

@@ -45,7 +45,7 @@ export class VisitorManager extends Manager {
         return index !== -1;
     }
 
-    getBookById(id) {
+    getVisitorById(id) {
         return this.data.find((b) => b.id === id);
     }
 
